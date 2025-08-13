@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía para Usar las Llamadas Telefónicas</title>
+<style>
+    body { font-family: Arial, sans-serif; background-color: #f4f8fb; color: #222; padding: 20px; line-height: 1.8; font-size: 20px; }
+    h1, h2 { color: #2a7ae2; text-align: center; }
+    .paso { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+    img { max-width: 100%; border-radius: 8px; margin-top: 10px; }
+    .botones-simulador { text-align: center; margin-top: 10px; }
+    .botones-simulador button { font-size: 20px; padding: 12px 18px; margin: 5px; border: none; border-radius: 8px; cursor: pointer; }
+    .llamar { background-color: #4CAF50; color: white; }
+    .colgar { background-color: #f44336; color: white; }
+    .altavoz { background-color: #ff9800; color: white; }
+    #aumentarTexto { background-color: #2a7ae2; color: white; border: none; padding: 10px 15px; font-size: 18px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>📞 Aprendamos a Usar las Llamadas Telefónicas</h1>
+
+<!-- Botón para aumentar/reducir texto -->
+<button id="aumentarTexto" onclick="cambiarTamañoTexto()">🔍 Aumentar texto</button>
+
+<p>Con esta guía aprenderás cómo hacer, recibir y finalizar llamadas desde tu celular de forma fácil y segura.</p>
+
+<div class="paso">
+<h2>1️⃣ Cómo Hacer una Llamada</h2>
+<p>1. Abre la aplicación de <strong>Teléfono</strong> en tu celular.<br>
+2. Marca el número o busca el contacto.<br>
+3. Presiona el botón verde de <strong>llamar</strong>.</p>
+<img src="imagenes/marcar-numero.jpg" alt="Imagen de cómo marcar un número">
+</div>
+
+<div class="paso">
+<h2>2️⃣ Cómo Recibir una Llamada</h2>
+<p>Cuando suene el teléfono, aparecerá en la pantalla quién llama.<br>
+Para contestar, toca o desliza el botón verde con el ícono de teléfono.</p>
+<img src="imagenes/recibir-llamada.jpg" alt="Imagen de cómo recibir una llamada">
+</div>
+
+<div class="paso">
+<h2>3️⃣ Funciones Durante la Llamada</h2>
+<p>Puedes usar estas opciones:</p>
+<div class="botones-simulador">
+    <button class="altavoz" onclick="alert('Altavoz activado')">🔊 Altavoz</button>
+    <button class="llamar" onclick="alert('Micrófono activado')">🎤 Micrófono</button>
+    <button class="colgar" onclick="alert('Llamada finalizada')">📴 Colgar</button>
+</div>
+<img src="imagenes/funciones-llamada.jpg" alt="Botones dentro de una llamada">
+</div>
+
+<div class="paso">
+<h2>4️⃣ Cómo Finalizar una Llamada</h2>
+<p>Presiona el botón rojo con el ícono de teléfono para colgar.</p>
+<img src="imagenes/finalizar-llamada.jpg" alt="Imagen de cómo finalizar una llamada">
+</div>
+
+<div class="paso">
+<h2>🎥 Video Explicativo</h2>
+<p>Mira este video para aprender mejor:</p>
+<iframe width="560" height="315" src="https://youtu.be/ct1pp0sPe9k" title="Cómo hacer y recibir llamadas" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script>
+let textoGrande = false;
+function cambiarTamañoTexto() {
+    let body = document.body;
+    if (!textoGrande) {
+        body.style.fontSize = "26px";
+        document.getElementById("aumentarTexto").textContent = "🔍 Reducir texto";
+        textoGrande = true;
+    } else {
+        body.style.fontSize = "20px";
+        document.getElementById("aumentarTexto").textContent = "🔍 Aumentar texto";
+        textoGrande = false;
+    }
+}
+  
+</script>
+  <a href="menu.html" class="boton">Volver al menú</a>
+</body>
+</html>
+
+
+
+
+
+
+

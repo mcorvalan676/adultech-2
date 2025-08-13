@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdulTech - Menú Fácil</title>
+  <style>
+    /* ======= ESTILOS GENERALES ======= */
+    body {
+      font-family: Verdana, sans-serif;
+      margin: 0;
+      background-color: #fefefe;
+      color: #1a202c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      color: #0b3d91;
+      font-size: 2rem;
+    }
+    p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* ======= BOTONES GRANDES ======= */
+    .boton {
+      display: block;
+      width: 90%;
+      max-width: 320px;
+      background: #0b3d91;
+      color: white;
+      padding: 18px;
+      margin: 10px auto;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .boton:hover {
+      background: #08296f;
+    }
+
+    /* ======= RECORDATORIO DESTACADO ======= */
+    .recordatorio {
+      background: #fff4cc;
+      color: #b35e00;
+      border: 2px solid #f1c40f;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      width: 90%;
+      max-width: 350px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* ======= PROGRESO ======= */
+    .progreso {
+      background: #e2e8f0;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 350px;
+      width: 90%;
+      margin: 20px auto;
+    }
+    .progreso h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+    .progreso label {
+      display: block;
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    /* ======= LISTA CLASES ======= */
+    #listaClasesContainer {
+      width: 90%;
+      max-width: 350px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    #listaClases li {
+      list-style: none;
+      background: #f0f4f8;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+
+    /* ======= RESPONSIVO ======= */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .boton {
+        font-size: 1.2rem;
+        padding: 16px;
+      }
+      .recordatorio, .progreso {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Menú Fácil</h1>
+    <p>Hola <span id="nombreUsuario"></span> (<span id="rolUsuario"></span>), elige qué deseas aprender hoy:</p>
+  </header>
+
+  <!-- Recordatorio -->
+  <div class="recordatorio" id="recordatorio" aria-live="polite"></div>
+
+  <!-- Botones dinámicos -->
+  <nav id="temasContainer"></nav>
+
+  <!-- Botón solo para Instructores -->
+  <a id="btnCreadorClases" class="boton" href="crear_clases.html" style="display:none;">
+    Creador de Clases
+  </a>
+
+  <!-- Progreso -->
+  <section class="progreso" aria-label="Progreso de aprendizaje">
+    <h3>Tu progreso:</h3>
+    <div id="progresoContainer"></div>
+  </section>
+
+  <!-- Lista de clases creadas -->
+  <section id="listaClasesContainer" style="display:none;">
+    <h2>Clases Disponibles</h2>
+    <ul id="listaClases"></ul>
+  </section>
+
+  <script>
+    const temas = [
+      { id: "whatsapp", nombre: "Usar WhatsApp", url: "whatsapp.html" },
+      { id: "web", nombre: "Navegar por Internet", url: "web.html" },
+      { id: "videollamada", nombre: "Hacer una Videollamada", url: "videollamada.html" },
+      { id: "llamadas", nombre: "Hacer una Llamada", url: "llamadas.html" },
+      { id: "redes", nombre: "Usar Redes Sociales", url: "redes.html" },
+  
+    ];
+
+    const nombre = localStorage.getItem('nombreUsuario') || 'usuario';
+    const rol = localStorage.getItem('rolUsuario') || 'aprendiz';
+    document.getElementById('nombreUsuario').textContent = nombre;
+    document.getElementById('rolUsuario').textContent = rol;
+
+    if (rol === "Instructor") {
+      document.getElementById('btnCreadorClases').style.display = "inline-block";
+    }
+
+    const temasContainer = document.getElementById('temasContainer');
+    const progresoContainer = document.getElementById('progresoContainer');
+
+    temas.forEach(t => {
+      const link = document.createElement('a');
+      link.className = "boton";
+      link.href = t.url;
+      link.textContent = t.nombre;
+      link.addEventListener('click', () => marcarAvance(t.id));
+      temasContainer.appendChild(link);
+
+      const label = document.createElement('label');
+      label.innerHTML = `<input type="checkbox" id="check_${t.id}" disabled> ${t.nombre}`;
+      progresoContainer.appendChild(label);
+    });
+
+    const listaClases = JSON.parse(localStorage.getItem('clases') || "[]");
+    if (rol !== "Instructor" && listaClases.length > 0) {
+      const container = document.getElementById('listaClasesContainer');
+      const ul = document.getElementById('listaClases');
+      container.style.display = "block";
+      listaClases.forEach(c => {
+        const li = document.createElement("li");
+        li.textContent = `${c.nombre}: ${c.descripcion}`;
+        ul.appendChild(li);
+      });
+    }
+
+    function marcarAvance(id) {
+      localStorage.setItem('avance_' + id, 'true');
+      localStorage.setItem('ultimoUso_' + id, new Date().toISOString());
+    }
+
+    temas.forEach(t => {
+      if (localStorage.getItem('avance_' + t.id)) {
+        document.getElementById('check_' + t.id).checked = true;
+      }
+    });
+
+    const diasSinUso = temas.filter(t => {
+      const fecha = localStorage.getItem('ultimoUso_' + t.id);
+      if (!fecha) return true;
+      const diff = Math.floor((Date.now() - new Date(fecha)) / (1000 * 60 * 60 * 24));
+      return diff >= 3;
+    }).length;
+
+    document.getElementById('recordatorio').textContent =
+      diasSinUso > 0
+        ? `¡Hola ${nombre}! No has practicado algunos temas en los últimos días. ¡Anímate a seguir aprendiendo!`
+        : `¡Buen trabajo, ${nombre}! Estás practicando seguido. ¡Sigue así!`;
+  </script>
+</body>
+</html>

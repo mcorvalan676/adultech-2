@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Usuario</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        padding: 20px;
+        margin: 0;
+    }
+
+    h2 {
+        text-align: center;
+        color: #0d47a1;
+        margin-bottom: 20px;
+    }
+
+    form {
+        max-width: 420px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    label {
+        display: block;
+        margin-top: 12px;
+        font-weight: 600;
+        color: #0d47a1;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: border-color 0.3s;
+    }
+
+    input:focus {
+        border-color: #2196f3;
+        outline: none;
+        box-shadow: 0 0 5px rgba(33,150,243,0.3);
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background-color: #0d47a1;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #1565c0;
+    }
+
+    .error {
+        color: #d32f2f;
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+</style>
+</head>
+<body>
+
+<h2>Registro de Usuario</h2>
+<form id="registroForm">
+    <label>Nombre:</label>
+    <input type="text" id="nombre" required>
+    <div id="errorNombre" class="error"></div>
+
+    <label>Edad:</label>
+    <input type="number" id="edad" required min="1">
+    <div id="errorEdad" class="error"></div>
+
+    <label>RUT:</label>
+    <input type="text" id="rut" placeholder="Ej: 12.345.678-9" required>
+    <div id="errorRut" class="error"></div>
+
+    <button type="submit">Registrarse</button>
+</form>
+
+<script>
+const nombreInput = document.getElementById("nombre");
+const edadInput = document.getElementById("edad");
+const rutInput = document.getElementById("rut");
+
+function validarNombre() {
+    const nombre = nombreInput.value.trim();
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre) || nombre.length < 2) {
+        document.getElementById("errorNombre").textContent = "Ingresa un nombre válido";
+        return false;
+    }
+    document.getElementById("errorNombre").textContent = "";
+    return true;
+}
+
+function validarEdad() {
+    const edad = parseInt(edadInput.value);
+    if (isNaN(edad) || edad < 10) {
+        document.getElementById("errorEdad").textContent = "La edad mínima es 10 años";
+        return false;
+    }
+    document.getElementById("errorEdad").textContent = "";
+    return true;
+}
+
+function validarRut() {
+    const rut = rutInput.value.trim();
+    if (!/^\d{1,2}\.\d{3}\.\d{3}-[\dkK]$/.test(rut)) {
+        document.getElementById("errorRut").textContent = "Formato de RUT inválido";
+        return false;
+    }
+    document.getElementById("errorRut").textContent = "";
+    return true;
+}
+
+// Validación en vivo
+nombreInput.addEventListener("input", validarNombre);
+edadInput.addEventListener("input", validarEdad);
+rutInput.addEventListener("input", validarRut);
+
+document.getElementById("registroForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (!validarNombre() || !validarEdad() || !validarRut()) return;
+
+    let usuario = {
+        nombre: nombreInput.value.trim(),
+        edad: edadInput.value.trim(),
+        rut: rutInput.value.trim()
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+    alert("Registro exitoso ✅");
+
+    // Redirigir a la siguiente página
+    window.location.href = "menu.html";
+});
+</script>
+
+</body>
+</html>

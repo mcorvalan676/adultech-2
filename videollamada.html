@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guía de Videollamadas – AdulTech</title>
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #1a202c;
+      --muted: #4a5568;
+      --accent: #2563eb; /* azul accesible */
+      --accent-2: #16a34a; /* verde accesible */
+      --danger: #dc2626; /* rojo accesible */
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 16px;
+      --step: 52px; /* tamaño del número del paso */
+    }
+    [data-contrast="high"]{
+      --bg:#000;--card:#111;--text:#fff;--muted:#e5e7eb;--accent:#3b82f6;--accent-2:#22c55e;--danger:#ef4444
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text); line-height: 1.6; font-size: 18px;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10; background: var(--card); box-shadow: var(--shadow);
+    }
+    .wrap { max-width: 1100px; margin: auto; padding: 20px; }
+    .title { display: flex; gap: 16px; align-items: center; }
+    .title h1 { margin: 10px 0; font-size: 38px; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      border: none; padding: 12px 16px; border-radius: 999px; background: var(--accent); color: #fff; cursor: pointer; font-size: 16px; box-shadow: var(--shadow);
+    }
+    .btn.secondary { background: var(--accent-2); }
+    .btn.muted { background: #334155; }
+    .btn.danger { background: var(--danger); }
+    .btn:focus { outline: 3px solid #93c5fd; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .card h3 { margin-top: 0; }
+
+    /* Pasos grandes y claros */
+    .paso { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; }
+    .nro {
+      width: var(--step); height: var(--step); min-width: var(--step); border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 22px;
+      background: var(--accent); color: #fff; box-shadow: var(--shadow);
+    }
+    .paso h4 { margin: 6px 0 8px; font-size: 22px; }
+    .paso p { margin: 0; color: var(--muted); font-size: 18px; }
+
+    /* Galería simple para imágenes con pie de foto */
+    .figure { background: #0ea5e91a; border: 2px dashed #0ea5e94d; border-radius: 14px; padding: 12px; text-align: center; }
+    .figure img { max-width: 100%; border-radius: 12px; }
+    .figure figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+
+    /* Controles simulados de una videollamada */
+    .call-ui { display:flex; gap:12px; flex-wrap: wrap; justify-content:center; padding: 12px; border-radius: 16px; background: #e2e8f0; }
+    [data-contrast="high"] .call-ui { background:#222; }
+    .control { display:flex; align-items:center; gap:10px; border-radius: 12px; padding: 12px 16px; background: var(--card); box-shadow: var(--shadow); }
+    .control .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent-2); }
+    .control.off .dot { background: var(--danger); }
+
+    /* Pie de página */
+    footer { color: var(--muted); text-align:center; padding: 32px 12px; }
+
+    /* Accesibilidad visual extra */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <div class="title" aria-label="Título de la página">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 12c2.761 0 5-2.239 5-5S14.761 2 12 2 7 4.239 7 7s2.239 5 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z" fill="currentColor" />
+        </svg>
+        <h1>Guía fácil de Videollamadas</h1>
+      </div>
+      <div class="controls" role="group" aria-label="Controles de accesibilidad">
+        <button class="btn" id="btnAumentar" aria-label="Aumentar tamaño de letra">A+ Texto</button>
+        <button class="btn" id="btnDisminuir" aria-label="Disminuir tamaño de letra">A− Texto</button>
+        <button class="btn secondary" id="btnContraste" aria-pressed="false" aria-label="Cambiar a alto contraste">Alto contraste</button>
+        <button class="btn muted" id="btnLeer" aria-label="Leer esta sección en voz alta">Leer en voz alta</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="contenido" role="main">
+    <section class="card" aria-labelledby="que-es">
+      <h2 id="que-es">¿Qué es una videollamada?</h2>
+      <p>Una videollamada es una llamada con <strong>audio y video</strong>. Puedes ver y escuchar a la otra persona en tiempo real usando tu <strong>celular</strong>, <strong>tablet</strong> o <strong>computador</strong>.</p>
+      <div class="grid" role="list" aria-label="Requisitos">
+        <div class="card" role="listitem">
+          <h3>Necesitas</h3>
+          <ul>
+            <li>Internet (Wi‑Fi o datos móviles).</li>
+            <li>Batería suficiente o el cargador conectado.</li>
+            <li>Una app de videollamadas (por ejemplo: <strong>WhatsApp</strong>, <strong>Google Meet</strong> o <strong>Zoom</strong>).</li>
+          </ul>
+        </div>
+        <div class="card" role="listitem">
+          <h3>Consejos rápidos</h3>
+          <ul>
+            <li>Busca un lugar <strong>tranquilo y con luz</strong>.</li>
+            <li>Coloca el teléfono a la altura de los ojos.</li>
+            <li>Habla claro y despacio. ¡No hay apuro!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="whatsapp">
+      <h2 id="whatsapp">Hacer una videollamada con WhatsApp (celular)</h2>
+
+      <article class="paso">
+        <div class="nro" aria-hidden="true">1</div>
+        <div>
+          <h4>Abre WhatsApp</h4>
+          <p>Toca el ícono <strong>WhatsApp</strong> en tu celular.</p>
+          <figure class="figure" role="group" aria-label="Imagen de ejemplo de la app WhatsApp en la pantalla">
+            <img src="img/WhatsApp_icon.png" alt="Pantalla principal del celular con el ícono de WhatsApp" />
+            <figcaption>Ubica el ícono verde de WhatsApp.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="paso">
+        <div class="nro" aria-hidden="true">2</div>
+        <div>
+          <h4>Elige el contacto</h4>
+          <p>Busca el nombre de la persona y tócalo para <strong>abrir el chat</strong>.</p>
+          <figure class="figure">
+            <img src="img/WhatsApp_entrada.jpg" alt="Lista de chats mostrando un contacto seleccionado" />
+            <figcaption>Abre la conversación de la persona.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="paso">
+        <div class="nro" aria-hidden="true">3</div>
+        <div>
+          <h4>Inicia la videollamada</h4>
+          <p>En la parte superior toca el <strong>ícono de cámara</strong>. Espera a que la otra persona conteste.</p>
+          <figure class="figure">
+            <img src="img/WhatsApp_chat.jpg" alt="Botón de cámara dentro del chat de WhatsApp" />
+            <figcaption>Botón de cámara = videollamada.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="paso">
+        <div class="nro" aria-hidden="true">4</div>
+        <div>
+          <h4>Controles durante la llamada</h4>
+          <p>Estos son los controles más usados. Puedes <strong>practicarlos aquí</strong> tocando los botones:</p>
+          <div class="call-ui" aria-label="Simulador de controles de videollamada">
+            <div class="control" data-control="mic" role="button" tabindex="0" aria-pressed="false" aria-label="Silenciar o activar micrófono">
+              <span class="dot" aria-hidden="true"></span>
+              <strong>Micrófono</strong>
+            </div>
+            <div class="control" data-control="cam" role="button" tabindex="0" aria-pressed="false" aria-label="Apagar o encender cámara">
+              <span class="dot" aria-hidden="true"></span>
+              <strong>Cámara</strong>
+            </div>
+            <div class="control" data-control="speaker" role="button" tabindex="0" aria-pressed="false" aria-label="Altavoz o auricular">
+              <span class="dot" aria-hidden="true"></span>
+              <strong>Altavoz</strong>
+            </div>
+            <div class="control off" data-control="end" role="button" tabindex="0" aria-label="Colgar llamada">
+              <span class="dot" aria-hidden="true"></span>
+              <strong>Colgar</strong>
+            </div>
+          </div>
+          <p id="estadoControles" aria-live="polite" style="margin-top:10px; color:var(--muted)">Tip: verde = activo, rojo = apagado.</p>
+        </div>
+      </article>
+
+      <article class="paso">
+        <div class="nro" aria-hidden="true">5</div>
+        <div>
+          <h4>Recibir una videollamada</h4>
+          <p>Cuando te llamen, verás la pantalla de llamada. <strong>Desliza</strong> o <strong>toca Aceptar</strong> para contestar.</p>
+          <figure class="figure">
+            <img src="img/Imagen de WhatsApp 2025-08-13 a las 19.05.22_10062d41.jpg" alt="Pantalla de llamada entrante con botones aceptar y rechazar" />
+            <figcaption>Botón <em>Aceptar</em> para contestar. <em>Rechazar</em> para cortar.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="meet">
+      <h2 id="meet">Unirse por enlace (Google Meet o Zoom)</h2>
+      <article class="paso">
+        <div class="nro" aria-hidden="true">1</div>
+        <div>
+          <h4>Toca el enlace</h4>
+          <p>Entra al <strong>enlace</strong> que te enviaron (por WhatsApp, SMS o correo). Se abrirá la app o el navegador.</p>
+        </div>
+      </article>
+      <article class="paso">
+        <div class="nro" aria-hidden="true">2</div>
+        <div>
+          <h4>Permisos</h4>
+          <p>Si te pregunta, permite usar <strong>micrófono</strong> y <strong>cámara</strong>.</p>
+        </div>
+      </article>
+      <article class="paso">
+        <div class="nro" aria-hidden="true">3</div>
+        <div>
+          <h4>Escribe tu nombre</h4>
+          <p>Ingresa tu nombre y toca <strong>Unirme</strong>.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="video">
+      <h2 id="video">Video explicativo</h2>
+      <p>Reproduce este video para ver un ejemplo paso a paso. Puedes cambiarlo por tu video favorito de YouTube.</p>
+      <!-- Reemplaza VIDEO_ID_AQUI por el ID de YouTube (lo que viene después de v= en la URL) -->
+      <div style="position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#000;">
+        <iframe aria-label="Video de YouTube sobre cómo hacer una videollamada" style="position:absolute;inset:0;width:100%;height:100%;border:0;" src="https://youtu.be/mlF3UyFau0I" title="Tutorial videollamadas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <details style="margin-top:12px;">
+        <summary><strong>¿Prefieres un video local?</strong></summary>
+        <p>Usa esta etiqueta y reemplaza <code>mi-video.mp4</code> con tu archivo:</p>
+        <pre><code>&lt;video controls width="100%" aria-label="Video de ejemplo"&gt;
+  &lt;source src="mi-video.mp4" type="video/mp4" /&gt;
+  Tu navegador no puede reproducir este video.
+&lt;/video&gt;</code></pre>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="problemas">
+      <h2 id="problemas">Si algo no funciona</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Sin sonido</h3>
+          <ul>
+            <li>Sube el volumen o activa <strong>Altavoz</strong>.</li>
+            <li>Revisa que el <strong>micrófono</strong> no esté en rojo (apagado).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Sin imagen</h3>
+          <ul>
+            <li>Enciende la <strong>cámara</strong>.</li>
+            <li>Gira el teléfono si la imagen está de lado.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Se corta</h3>
+          <ul>
+            <li>Acércate al <strong>Wi‑Fi</strong> o desactiva otras apps.</li>
+            <li>Conecta el cargador si la batería está baja.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="practica">
+      <h2 id="practica">Práctica guiada</h2>
+      <p>Escribe el nombre de la persona e inicia una <em>llamada de práctica</em> (no real) para que te familiarices con los pasos.</p>
+      <form id="formPractica" aria-label="Formulario de práctica" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <label for="nombre" class="sr-only">Nombre del contacto</label>
+        <input id="nombre" name="nombre" required placeholder="Nombre del contacto" style="flex:1; min-width:220px; padding:12px 14px; border-radius:12px; border:2px solid #cbd5e1; font-size:18px;" />
+        <button class="btn" type="submit" aria-label="Iniciar llamada de práctica">Iniciar práctica</button>
+      </form>
+      <div id="resultadoPractica" role="status" aria-live="polite" style="margin-top:12px; color:var(--muted)"></div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>AdulTech · Guía clara y grande para personas mayores · <a href="#contenido" style="color:var(--accent)">Volver arriba</a></p>
+  </footer>
+
+  <script>
+    // Accesibilidad: control de tamaño de fuente
+    const btnMas = document.getElementById('btnAumentar');
+    const btnMenos = document.getElementById('btnDisminuir');
+    let base = 18; // px
+    function aplicarTamaño(){ document.body.style.fontSize = base + 'px'; }
+    btnMas.addEventListener('click', ()=>{ base = Math.min(base + 2, 28); aplicarTamaño(); });
+    btnMenos.addEventListener('click', ()=>{ base = Math.max(base - 2, 14); aplicarTamaño(); });
+
+    // Alto contraste
+    const btnContraste = document.getElementById('btnContraste');
+    btnContraste.addEventListener('click', ()=>{
+      const alto = document.documentElement.getAttribute('data-contrast') === 'high';
+      document.documentElement.setAttribute('data-contrast', alto ? 'normal' : 'high');
+      btnContraste.setAttribute('aria-pressed', String(!alto));
+    });
+
+    // Texto a voz (lee el título de la sección visible)
+    const btnLeer = document.getElementById('btnLeer');
+    btnLeer.addEventListener('click', ()=>{
+      const s = window.getSelection(); if (s && s.toString().trim()) { hablar(s.toString()); return; }
+      const seccion = document.elementFromPoint(window.innerWidth/2, 120)?.closest('section');
+      const titulo = seccion?.querySelector('h2')?.textContent || 'Guía de videollamadas';
+      hablar('Estás en la sección: ' + titulo + '. Desplázate para seguir los pasos.');
+    });
+    function hablar(texto){
+      try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(texto); u.lang = 'es-ES'; window.speechSynthesis.speak(u); }
+      catch(e){ alert('Tu navegador no admite lectura en voz alta.'); }
+    }
+
+    // Simulador de controles de llamada
+    const estado = { mic:true, cam:true, speaker:true };
+    const salida = document.getElementById('estadoControles');
+    document.querySelectorAll('.control').forEach(el=>{
+      el.addEventListener('click', ()=>toggle(el));
+      el.addEventListener('keydown', (ev)=>{ if(ev.key==='Enter' || ev.key===' '){ ev.preventDefault(); toggle(el); }});
+    });
+    function toggle(el){
+      const tipo = el.dataset.control;
+      if(tipo==='end'){ salida.textContent = 'Has colgado la llamada de práctica.'; return; }
+      const nuevo = !el.classList.toggle('off'); // off = rojo
+      el.setAttribute('aria-pressed', String(nuevo));
+      estado[tipo] = nuevo;
+      const texto = `Micrófono ${estado.mic? 'encendido' : 'apagado'}, cámara ${estado.cam? 'encendida' : 'apagada'}, altavoz ${estado.speaker? 'activo' : 'inactivo'}.`;
+      salida.textContent = texto;
+    }
+
+    // Práctica guiada
+    const form = document.getElementById('formPractica');
+    const out = document.getElementById('resultadoPractica');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const nombre = (document.getElementById('nombre').value || '').trim();
+      if(!nombre){ out.textContent = 'Escribe un nombre para practicar.'; return; }
+      out.innerHTML = ` Llamando a <strong>${nombre}</strong> (simulación). Sigue los pasos: abrir chat ➜ tocar cámara ➜ probar controles.`;
+      hablar('Iniciando práctica de videollamada con ' + nombre + '.');
+    });
+  </script>
+  <br>
+  <a href="menu.html" class="boton">Volver al menú</a>
+</body>
+</html>
+
+

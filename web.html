@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navegación Segura en la Web – Guía clara para adultos mayores</title>
+  <style>
+    :root{
+      --bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#475569;--blue:#2563eb;--green:#16a34a;--amber:#f59e0b;--red:#dc2626;--gray:#334155;--shadow:0 12px 32px rgba(0,0,0,.08);--r:18px
+    }
+    [data-contrast="high"]{--bg:#000;--card:#111;--text:#fff;--muted:#e5e7eb}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.65;font-size:18px}
+    header{position:sticky;top:0;background:var(--card);box-shadow:var(--shadow);z-index:20}
+    .wrap{max-width:1100px;margin:auto;padding:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand h1{font-size:34px;margin:8px 0}
+    .tag{display:inline-flex;gap:8px;align-items:center;background:#e0f2fe;color:#0c4a6e;border:1px solid #bae6fd;padding:6px 12px;border-radius:999px;font-size:14px}
+    .btn{border:none;border-radius:999px;padding:12px 16px;font-size:16px;cursor:pointer;color:#fff;box-shadow:var(--shadow);background:var(--blue)}
+    .btn.alt{background:var(--gray)}
+    .btn.green{background:var(--green)}
+    .btn.red{background:var(--red)}
+    .btn:focus{outline:3px solid #93c5fd}
+    .card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .step{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+    .n{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#064e3b;font-weight:800}
+    .step h4{margin:6px 0 8px;font-size:22px}
+    .step p{margin:0;color:var(--muted)}
+    .figure{background:#e0e7ff;border:2px dashed #c7d2fe;padding:12px;border-radius:14px;text-align:center}
+    .figure img{max-width:100%;border-radius:12px}
+    .figure figcaption{font-size:15px;color:var(--muted);margin-top:8px}
+    .tip{background:#fef3c7;border:1px solid #fde68a;color:#92400e;padding:12px;border-radius:12px}
+    .ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:12px;border-radius:12px}
+    footer{text-align:center;color:var(--muted);padding:32px 12px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Simulador: comprobador de enlaces */
+    .checker{display:grid;gap:12px}
+    .urlbox{display:flex;gap:8px;align-items:center}
+    .field{flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:2px solid #cbd5e1;font-size:18px}
+    .badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;border:1px solid #cbd5e1;background:#f8fafc}
+    .badge.good{border-color:#86efac;background:#ecfdf5}
+    .badge.bad{border-color:#fecaca;background:#fef2f2}
+
+    /* Simulador: medidor de contraseña */
+    .meter{height:12px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+    .bar{height:100%;width:0%;background:var(--red);transition:width .3s linear, background .3s linear}
+
+    /* Lista de verificación imprimible */
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:scale(1.3);margin-top:4px}
+
+    .quiz .q{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0}
+    .quiz .q[aria-expanded="true"]{border-color:#c7d2fe;background:#eef2ff}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2A10 10 0 1 0 12 22A10 10 0 0 0 12 2Z" fill="#2563eb"/>
+          <path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <h1>Navegación Segura en la Web</h1>
+          <div class="tag" aria-label="Objetivo de la guía">Aprender a navegar sin riesgos</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn green" id="bPlus" aria-label="Aumentar tamaño de texto">A+ Texto</button>
+        <button class="btn alt" id="bMinus" aria-label="Disminuir tamaño de texto">A− Texto</button>
+        <button class="btn" id="bContrast" aria-pressed="false" aria-label="Activar alto contraste">Alto contraste</button>
+        <button class="btn" id="bRead" aria-label="Leer esta sección en voz alta">Leer sección</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="contenido" role="main">
+    <section class="card" aria-labelledby="que-es">
+      <h2 id="que-es">¿Qué significa navegar seguro?</h2>
+      <p>Es usar Internet con <strong>prudencia</strong> para proteger tus <strong>datos</strong>, tu <strong>dinero</strong> y tu <strong>equipo</strong>. Aquí aprenderás señales simples para evitar engaños.</p>
+      <div class="grid">
+        <div class="card ok">
+          <h3>Señales de sitio confiable</h3>
+          <ul>
+            <li>Dirección empieza con <strong>https://</strong> y aparece un <strong>candado</strong>.</li>
+            <li>Nombre del sitio <strong>claro</strong> (ej.: banco.cl, gobierno.cl).</li>
+            <li>Ortografía correcta, diseño ordenado, no pide datos innecesarios.</li>
+          </ul>
+        </div>
+        <div class="card tip">
+          <h3>Señales de posible engaño</h3>
+          <ul>
+            <li>Regalos increíbles, urgencia: “¡Última oportunidad, haz clic ahora!”.</li>
+            <li>Faltas de ortografía, logos borrosos, direcciones raras (banco-seguro-login.xyz).</li>
+            <li>Te piden claves o códigos por correo/WhatsApp.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="comprobador">
+      <h2 id="comprobador">Comprobador de enlaces (práctica)</h2>
+      <p>Escribe un enlace y te diré si parece <strong>bien</strong> o <strong>riesgoso</strong>. Consejo: <em>mira el nombre entre “https://” y la primera “/”</em>. Ese es el dominio.</p>
+      <div class="checker">
+        <div class="urlbox">
+          <label class="sr-only" for="u">Dirección web</label>
+          <input id="u" class="field" placeholder="Ej.: https://www.banco.cl/transferencia" />
+          <button class="btn" id="check">Revisar</button>
+        </div>
+        <div id="domainInfo" class="badge" aria-live="polite">—</div>
+        <div id="veredict" class="badge" aria-live="polite">Esperando dirección…</div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="contrasenas">
+      <h2 id="contrasenas">Contraseñas seguras</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Reglas fáciles</h3>
+          <ul>
+            <li>Usa frases largas: <em>Mi_perrito_come_2010!</em></li>
+            <li>No repitas claves entre sitios.</li>
+            <li>Activa <strong>verificación en 2 pasos (2FA)</strong> cuando sea posible.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Prueba tu contraseña (no real)</h3>
+          <label for="pw" class="sr-only">Escribe una contraseña de ejemplo</label>
+          <input id="pw" class="field" placeholder="Escribe un ejemplo (no uses tu clave real)" />
+          <div class="meter" style="margin-top:10px"><div id="bar" class="bar"></div></div>
+          <p id="pwTip" style="color:var(--muted);margin-top:8px">Fuerza: —</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="descargas">
+      <h2 id="descargas">Descargas y actualizaciones</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Descargar con seguridad</h3>
+          <ul>
+            <li>Descarga solo desde tiendas oficiales o sitios de confianza.</li>
+            <li>Desconfía de “versiones gratis” de programas de pago.</li>
+            <li>Pasa el archivo por tu <strong>antivirus</strong> si tienes.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Actualizaciones</h3>
+          <ul>
+            <li>Mantén el <strong>navegador</strong> y el <strong>sistema</strong> al día.</li>
+            <li>Actualiza WhatsApp y otras apps desde la tienda oficial.</li>
+            <li>Activa actualizaciones automáticas si es posible.</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="figure" style="margin-top:12px">
+        <img src="img/Captura de pantalla 2025-08-13 184801.png" alt="Ejemplo de descarga desde sitio oficial"/>
+        <figcaption>Busca los botones oficiales y evita pop‑ups con mensajes engañosos.</figcaption>
+      </figure>
+    </section>
+
+    <section class="card" aria-labelledby="privacidad">
+      <h2 id="privacidad">Privacidad en el navegador</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Modo incógnito</h3>
+          <p>No guarda historial local, pero <strong>no</strong> te hace invisible. Tu proveedor y el sitio aún pueden ver la conexión.</p>
+        </div>
+        <div class="card">
+          <h3>Cookies</h3>
+          <p>Acepta solo lo necesario. Puedes borrar cookies en <em>Configuración → Privacidad</em> del navegador.</p>
+        </div>
+        <div class="card">
+          <h3>Permisos</h3>
+          <p>Cuando un sitio pida <strong>ubicación, cámara o micrófono</strong>, permite solo si es necesario y de confianza.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="falsasnoticias">
+      <h2 id="falsasnoticias">Detectar noticias falsas</h2>
+      <ul>
+        <li>Lee más allá del titular. ¿Hay <strong>fecha</strong> y <strong>autor</strong>?</li>
+        <li>Compara con <strong>otro medio</strong> conocido.</li>
+        <li>Desconfía de capturas de pantalla sin fuente.</li>
+        <li>Si te piden dinero o datos, probablemente es <strong>fraude</strong>.</li>
+      </ul>
+      <figure class="figure">
+        <img src="img/Captura de pantalla 2025-08-13 185151.png" alt="Ejemplo de noticia en una web"/>
+        <figcaption>Verifica el medio y la fecha de publicación.</figcaption>
+      </figure>
+    </section>
+
+   
+    <section class="card" aria-labelledby="checklist">
+      <h2 id="checklist">Lista de verificación rápida</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Veo <strong>https://</strong> y candado.</label>
+        <label><input type="checkbox"> Reconozco el <strong>nombre del sitio</strong>.</label>
+        <label><input type="checkbox"> No hago clic en regalos o premios sospechosos.</label>
+        <label><input type="checkbox"> No doy <strong>claves</strong> ni <strong>códigos</strong> por WhatsApp/correo.</label>
+        <label><input type="checkbox"> Mis apps y navegador están <strong>actualizados</strong>.</label>
+      </div>
+    </section>
+
+    <section class="card quiz" aria-labelledby="quiz">
+      <h2 id="quiz">Mini‑quiz (práctica)</h2>
+      <div class="q" data-a="B" tabindex="0" aria-expanded="false">
+        <p><strong>1.</strong> Te llega un correo del “banco” pidiendo tu clave. ¿Qué haces?</p>
+        <ol type="A">
+          <li>A) Responder con mi clave para no perder la cuenta.</li>
+          <li>B) No respondo, entro manualmente a la web del banco y verifico.</li>
+        </ol>
+        <p class="sr-only">Respuesta correcta: B</p>
+      </div>
+      <div class="q" data-a="C" tabindex="0" aria-expanded="false">
+        <p><strong>2.</strong> Un enlace dice <code>https://seguro-banco-login.xyz</code>. ¿Es confiable?</p>
+        <ol type="A">
+          <li>A) Sí, porque tiene https.</li>
+          <li>B) Tal vez, si el logo se ve bien.</li>
+          <li>C) No, el dominio es raro.</li>
+        </ol>
+        <p class="sr-only">Respuesta correcta: C</p>
+      </div>
+      <div class="q" data-a="A" tabindex="0" aria-expanded="false">
+        <p><strong>3.</strong> ¿Qué es mejor para una contraseña?</p>
+        <ol type="A">
+          <li>A) Una frase larga con símbolos.</li>
+          <li>B) 123456.</li>
+        </ol>
+        <p class="sr-only">Respuesta correcta: A</p>
+      </div>
+      <p id="score" style="color:var(--muted);margin-top:8px">Haz clic en cada pregunta para ver si aciertas.</p>
+    </section>
+
+    <section class="card" aria-labelledby="ayuda">
+      <h2 id="ayuda">Si algo no se ve bien</h2>
+      <div class="grid">
+        <div class="card"><h3>Pop‑ups molestos</h3><p>Cierra la pestaña. No aceptes <em>“permitir notificaciones”</em> en sitios desconocidos.</p></div>
+        <div class="card"><h3>Publicidad confusa</h3><p>Evita botones grandes que dicen <em>“Descargar”</em> si no son del sitio oficial.</p></div>
+        <div class="card"><h3>Duda</h3><p>Pregunta a alguien de confianza antes de escribir datos o pagar.</p></div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="practica">
+      <h2 id="practica">Plan de acción ante sospecha</h2>
+      <ol>
+        <li>No hagas clic. Toma una captura si necesitas consultar.</li>
+        <li>Cierra la pestaña o la app.</li>
+        <li>Cambia tu contraseña si ya hiciste clic y escribiste datos.</li>
+        <li>Activa 2FA y revisa movimientos (banco, correo).</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Guía clara para personas mayores • <a href="#contenido" style="color:var(--blue)">Volver arriba</a></p>
+  </footer>
+
+  <script>
+    // Accesibilidad: tamaño de letra
+    let base=18; const apply=()=>document.body.style.fontSize=base+'px';
+    document.getElementById('bPlus').onclick=()=>{base=Math.min(base+2,28);apply()}
+    document.getElementById('bMinus').onclick=()=>{base=Math.max(base-2,14);apply()}
+
+    // Alto contraste
+    const bContrast=document.getElementById('bContrast');
+    bContrast.onclick=()=>{
+      const on=document.documentElement.getAttribute('data-contrast')==='high';
+      document.documentElement.setAttribute('data-contrast',on? 'normal':'high');
+      bContrast.setAttribute('aria-pressed',String(!on));
+    }
+
+    // Lectura en voz alta
+    document.getElementById('bRead').onclick=()=>{
+      const s=window.getSelection(); if(s && s.toString().trim()){speak(s.toString());return}
+      const sec=document.elementFromPoint(window.innerWidth/2,120)?.closest('section');
+      const t=sec?.querySelector('h2')?.textContent || 'Guía de navegación segura';
+      speak('Estás en la sección: '+t+'. Desplázate para seguir los pasos.');
+    }
+    function speak(text){ try{window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='es-ES'; window.speechSynthesis.speak(u);}catch(e){alert('Tu navegador no admite lectura en voz alta.')} }
+
+    // Comprobador de enlaces
+    const u=document.getElementById('u');
+    const check=document.getElementById('check');
+    const domainInfo=document.getElementById('domainInfo');
+    const veredict=document.getElementById('veredict');
+
+    function getDomain(url){
+      try{
+        const a=new URL(url);
+        return a.hostname;
+      }catch(e){return ''}
+    }
+    function looksPhishy(host){
+      if(!host) return true;
+      const redFlags=["-seguro-","-login-","verify", "bonus", "free", "gift", "win", "-update-", "support-", "-help-"];
+      const tldBad=[".xyz",".top",".ru",".tk",".bid"];
+      if(tldBad.some(t=>host.endsWith(t))) return true;
+      if(redFlags.some(k=>host.includes(k))) return true;
+      if(host.split('.').length>4) return true; // subdominios excesivos
+      return false;
+    }
+
+    check.onclick=()=>{
+      const val=(u.value||'').trim();
+      if(!val){ veredict.className='badge'; veredict.textContent='Escribe una dirección.'; return }
+      const d=getDomain(val);
+      if(!d){ domainInfo.className='badge bad'; domainInfo.textContent='Dirección inválida'; veredict.className='badge bad'; veredict.textContent=⚠️ Revisa la dirección.'; return }
+      domainInfo.className='badge'; domainInfo.innerHTML='Dominio detectado: <strong>'+d+'</strong>';
+      if(looksPhishy(d)){
+        veredict.className='badge bad'; veredict.textContent='⚠️ Podría ser riesgoso. Revisa bien el dominio.';
+      }else{
+        veredict.className='badge good'; veredict.textContent='✅ Parece bien (igualmente verifica).';
+      }
+    }
+
+    // Medidor de contraseña (ejemplo educativo)
+    const pw=document.getElementById('pw');
+    const bar=document.getElementById('bar');
+    const pwTip=document.getElementById('pwTip');
+    pw.addEventListener('input',()=>{
+      const v=pw.value; let s=0;
+      if(v.length>=12) s+=30; else if(v.length>=8) s+=15;
+      if(/[A-Z]/.test(v)) s+=15; if(/[a-z]/.test(v)) s+=15; if(/\d/.test(v)) s+=15; if(/[^\w]/.test(v)) s+=25;
+      s=Math.min(100,s);
+      bar.style.width=s+'%';
+      bar.style.background = s<40? 'var(--red)' : s<70? 'var(--amber)' : 'var(--green)';
+      pwTip.textContent='Fuerza: '+(s<40?'débil':s<70?'media':'fuerte');
+    });
+
+    // Mini‑quiz
+    const blocks=document.querySelectorAll('.quiz .q');
+    let aciertos=0, vistos=0;
+    blocks.forEach(b=>{
+      b.addEventListener('click',()=>{
+        const ok=b.dataset.a; const sel=prompt('Elige tu respuesta (A/B/C):','A');
+        b.setAttribute('aria-expanded','true');
+        if(!sel) return;
+        vistos++;
+        if(sel.toUpperCase()===ok){ aciertos++; b.style.borderColor='var(--green)'; b.style.background='#ecfdf5'; }
+        else { b.style.borderColor='var(--red)'; b.style.background='#fef2f2'; }
+        document.getElementById('score').textContent=`Preguntas vistas: ${vistos} • Aciertos: ${aciertos}`;
+      });
+    });
+  </script>
+  <br>
+  <a href="menu.html" class="boton">Volver al menú</a>
+</body>
+</html>

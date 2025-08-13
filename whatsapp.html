@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cómo usar WhatsApp – Guía clara para adultos mayores</title>
+  <style>
+    :root{
+      --bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#475569;--green:#22c55e;--green-dark:#16a34a;--blue:#2563eb;--amber:#f59e0b;--red:#dc2626;--shadow:0 12px 32px rgba(0,0,0,.08);--r:18px
+    }
+    [data-contrast="high"]{--bg:#000;--card:#111;--text:#fff;--muted:#e5e7eb}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.65;font-size:18px}
+    header{position:sticky;top:0;background:var(--card);box-shadow:var(--shadow);z-index:20}
+    .wrap{max-width:1100px;margin:auto;padding:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand h1{font-size:34px;margin:8px 0}
+    .btn{border:none;border-radius:999px;padding:12px 16px;font-size:16px;cursor:pointer;color:#fff;box-shadow:var(--shadow);background:var(--blue)}
+    .btn.alt{background:#334155}
+    .btn.green{background:var(--green-dark)}
+    .btn.red{background:var(--red)}
+    .btn:focus{outline:3px solid #93c5fd}
+    .card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .step{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+    .n{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#064e3b;font-weight:800}
+    .step h4{margin:6px 0 8px;font-size:22px}
+    .step p{margin:0;color:var(--muted)}
+    .figure{background:#dcfce7;border:2px dashed #86efac;padding:12px;border-radius:14px;text-align:center}
+    .figure img{max-width:100%;border-radius:12px}
+    .figure figcaption{font-size:15px;color:var(--muted);margin-top:8px}
+    .tip{background:#fef3c7;border:1px solid #fde68a;color:#92400e;padding:12px;border-radius:12px}
+    footer{text-align:center;color:var(--muted);padding:32px 12px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Simulador de chat */
+    .phone{background:#0b141a;border-radius:28px;padding:14px;display:grid;gap:12px}
+    .screen{background:#111827;border-radius:18px;padding:12px;display:grid;grid-template-rows:auto 1fr auto;min-height:420px}
+    .topbar{display:flex;align-items:center;gap:10px;padding:8px 10px;background:#1f2937;color:#e5e7eb;border-radius:12px}
+    .msgs{padding:10px;display:flex;flex-direction:column;gap:8px;overflow:auto;border-radius:12px;background:#0f172a}
+    .bubble{max-width:75%;padding:10px 12px;border-radius:16px}
+    .bubble.in{align-self:flex-start;background:#1f2937;color:#e5e7eb;border-top-left-radius:6px}
+    .bubble.out{align-self:flex-end;background:#075e54;color:#fff;border-top-right-radius:6px}
+    .compose{display:flex;align-items:center;gap:8px;padding:8px;background:#1f2937;border-radius:12px}
+    .chip{display:inline-flex;align-items:center;gap:6px;background:#e2e8f0;color:#111827;border:1px solid #cbd5e1;padding:6px 10px;border-radius:999px;font-size:14px}
+    input[type="text"].field{flex:1;min-width:150px;padding:12px 14px;border-radius:999px;border:none;background:#e5e7eb}
+    .iconbtn{background:#10b981;border:none;border-radius:999px;padding:12px;cursor:pointer;color:#062}
+    .iconbtn.alt{background:#06b6d4}
+    .iconbtn.gray{background:#94a3b8}
+    .iconbtn:focus{outline:3px solid #93c5fd}
+    .bar{display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.673.15-.198.297-.77.967-.944 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.673-1.62-.922-2.218-.242-.58-.487-.5-.673-.51l-.573-.01c-.198 0-.521.074-.793.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.264.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path fill="#25D366" d="M20.52 3.48C18.24 1.2 15.24 0 12 0 5.37 0 0 5.37 0 12c0 2.115.555 4.177 1.607 5.992L0 24l6.166-1.592A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.24-1.2-6.24-3.48-8.52zM12 22.092c-1.942 0-3.84-.521-5.503-1.507l-.395-.234-3.66.944.977-3.563-.256-.412A9.99 9.99 0 0 1 2.004 12c0-5.514 4.482-9.996 9.996-9.996a9.93 9.93 0 0 1 7.074 2.929A9.93 9.93 0 0 1 22 12c0 5.514-4.482 9.996-10 10.092z"/>
+        </svg>
+        <div>
+          <h1>Cómo usar WhatsApp</h1>
+          <div class="bar">
+            <span class="chip" aria-label="Nivel básico">Básico</span>
+            <span class="chip" aria-label="Incluye llamadas y video">Mensajes • Llamadas • Video</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn green" id="bPlus" aria-label="Aumentar tamaño de texto">A+ Texto</button>
+        <button class="btn alt" id="bMinus" aria-label="Disminuir tamaño de texto">A− Texto</button>
+        <button class="btn" id="bContrast" aria-pressed="false" aria-label="Activar alto contraste">Alto contraste</button>
+        <button class="btn" id="bRead" aria-label="Leer esta sección en voz alta">Leer sección</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="contenido" role="main">
+    <section class="card" aria-labelledby="que-es">
+      <h2 id="que-es">¿Qué es WhatsApp?</h2>
+      <p>Es una aplicación para <strong>enviar mensajes</strong>, <strong>fotos</strong>, <strong>audio</strong>, hacer <strong>llamadas</strong> y <strong>videollamadas</strong> usando Internet. Es gratuita.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Instalar</h3>
+          <ol>
+            <li>Abre la tienda: <em>Play Store</em> o <em>App Store</em>.</li>
+            <li>Busca <strong>WhatsApp</strong> y toca <strong>Instalar</strong>.</li>
+            <li>Abre la app y verifica tu <strong>número</strong> con un SMS.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Requisitos</h3>
+          <ul>
+            <li>Internet (Wi‑Fi o datos).</li>
+            <li>Permiso de <strong>notificaciones</strong>.</li>
+            <li>Permisos de <strong>micrófono</strong> y <strong>cámara</strong> para llamadas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="primeros-pasos">
+      <h2 id="primeros-pasos">Primeros pasos</h2>
+      <article class="step">
+        <div class="n" aria-hidden="true">1</div>
+        <div>
+          <h4>Abrir WhatsApp</h4>
+          <p>Toca el ícono verde con un teléfono blanco.</p>
+          <figure class="figure"><img src="img/WhatsApp_icon.png" alt="Icono de WhatsApp"/><figcaption>Ícono de WhatsApp en la pantalla.</figcaption></figure>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n" aria-hidden="true">2</div>
+        <div>
+          <h4>Crear o buscar un chat</h4>
+          <p>Toca <strong>Nuevo chat</strong> y elige a la persona, o usa la <strong>búsqueda</strong> arriba.</p>
+          <figure class="figure"><img src="img/WhatsApp_entrada.jpg" alt="Lista de chats en WhatsApp"/><figcaption>Abre la conversación deseada.</figcaption></figure>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n" aria-hidden="true">3</div>
+        <div>
+          <h4>Escribir y enviar un mensaje</h4>
+          <p>Escribe en la barra inferior y toca <strong>Enviar</strong> (flecha).</p>
+          <figure class="figure"><img src="img/WhatsApp_chat.jpg" alt="Barra para escribir mensaje"/><figcaption>Texto → botón de flecha para enviar.</figcaption></figure>
+        </div>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="simulador">
+      <h2 id="simulador">Simulador de chat (práctica)</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="phone" aria-label="Teléfono simulado">
+            <div class="screen">
+              <div class="topbar" aria-label="Barra del chat">
+                <span aria-hidden="true">👤</span>
+                <strong id="contactName">María</strong>
+                <span style="margin-left:auto" class="chip">en línea</span>
+              </div>
+              <div class="msgs" id="msgs" aria-live="polite">
+                <div class="bubble in">Hola, ¿cómo estás?</div>
+                <div class="bubble out">Muy bien, ¿y tú?</div>
+              </div>
+              <div class="compose">
+                <button class="iconbtn gray" id="bEmoji" title="Insertar emoji" aria-label="Insertar emoji">😊</button>
+                <input class="field" id="txt" type="text" placeholder="Escribe un mensaje" aria-label="Escribe un mensaje" />
+                <button class="iconbtn" id="bSend" title="Enviar" aria-label="Enviar">➤</button>
+                <button class="iconbtn alt" id="bAudio" title="Enviar audio" aria-label="Grabar nota de voz">🎤</button>
+                <button class="iconbtn gray" id="bAdj" title="Adjuntar" aria-label="Adjuntar archivo">📎</button>
+              </div>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Practica: escribe un mensaje, agrega un emoji, envía una nota de voz (simulada) o adjunta un archivo (simulado).</p>
+        </div>
+        <div class="card">
+          <h3>Consejos rápidos</h3>
+          <ul>
+            <li><strong>✓</strong> Mantén el teléfono con buena batería o conectado.</li>
+            <li><strong>✓</strong> Evita abreviaturas complicadas.</li>
+            <li><strong>✓</strong> Usa emojis 🙂 para expresar emociones.</li>
+          </ul>
+          <div class="tip"><strong>Privacidad:</strong> En Ajustes → Privacidad puedes ocultar tu última vez, foto, confirmación de lectura y más.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="multimedia">
+      <h2 id="multimedia">Enviar fotos, documentos y ubicación</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Fotos y cámara</h3>
+          <ol>
+            <li>Toca <strong>📎</strong> (Adjuntar).</li>
+            <li>Elige <em>Galería</em> o <em>Cámara</em>.</li>
+            <li>Selecciona la foto y toca <strong>Enviar</strong>.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Documentos</h3>
+          <ol>
+            <li>Toca <strong>📎</strong> → <em>Documento</em>.</li>
+            <li>Selecciona el archivo (PDF/Word, etc.).</li>
+            <li>Confirma con <strong>Enviar</strong>.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Ubicación</h3>
+          <ol>
+            <li><strong>📎</strong> → <em>Ubicación</em>.</li>
+            <li>Activa GPS si lo pide.</li>
+            <li>Elige <em>Ubicación en tiempo real</em> o <em>Ubicación actual</em>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="llamadas">
+      <h2 id="llamadas">Llamadas y videollamadas</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Voz</h3>
+          <p>En el chat, toca el ícono de <strong>teléfono</strong> para una llamada de voz.</p>
+        </div>
+        <div class="card">
+          <h3>Video</h3>
+          <p>Toca el ícono de <strong>cámara</strong> para iniciar una videollamada.</p>
+        </div>
+        <div class="card">
+          <h3>Grupales</h3>
+          <p>En <em>Llamadas</em> → <strong>Enlace de llamada</strong> para invitar a varias personas fácilmente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="estados">
+      <h2 id="estados">Estados (historias de 24 horas)</h2>
+      <p>En la pestaña <strong>Estados</strong> publica fotos o textos que desaparecen en 24 horas. Toca <strong>Mi estado</strong> para crear uno.</p>
+      <figure class="figure"><img src="img/Imagen de WhatsApp 2025-08-13 a las 18.34.03_6ef1262c.jpg" 
+    </section>
+
+    <section class="card" aria-labelledby="seguridad">
+      <h2 id="seguridad">Seguridad y respaldo</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Verificación en dos pasos</h3>
+          <p>En Ajustes → Cuenta → <strong>Verificación en dos pasos</strong>. Actívala para mayor seguridad.</p>
+        </div>
+        <div class="card">
+          <h3>Respaldo (copia de seguridad)</h3>
+          <p>Ajustes → Chats → <strong>Copia de seguridad</strong>. Programa copias en Google Drive o iCloud.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="video">
+      <h2 id="video">Video explicativo</h2>
+      <p>Reproduce este video de ejemplo (puedes cambiarlo por el que prefieras).</p>
+      <div style="position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#000">
+        <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0" src="vdo/Cómo Usar WhatsApp - Guía Fácil para Adultos Mayores 📱👵👴 - Carol Guiñazú (720p, h264).mp4" title="Cómo usar WhatsApp (guía para principiantes)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <details style="margin-top:10px"><summary><strong>O usar un archivo MP4 local</strong></summary>
+        <pre><code>&lt;video controls width="100%" aria-label="Tutorial de WhatsApp"&gt;
+  &lt;source src="mi-tutorial.mp4" type="video/mp4" /&gt;
+  Tu navegador no puede reproducir este video.
+&lt;/video&gt;</code></pre>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="ayuda">
+      <h2 id="ayuda">Si algo no funciona</h2>
+      <div class="grid">
+        <div class="card"><h3>No llegan mensajes</h3><ul><li>Verifica Internet / Wi‑Fi.</li><li>Activa notificaciones en Ajustes.</li><li>Reinicia el teléfono.</li></ul></div>
+        <div class="card"><h3>No puedo enviar</h3><ul><li>Comprueba señal o datos móviles.</li><li>Actualiza WhatsApp en la tienda.</li><li>Borra caché/espacio si está lleno.</li></ul></div>
+        <div class="card"><h3>Audio/Video con problemas</h3><ul><li>Permite micrófono/cámara.</li><li>Sube volumen o usa altavoz.</li><li>Buena luz delante del rostro.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="practica">
+      <h2 id="practica">Práctica guiada</h2>
+      <form id="formName" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <label for="name" class="sr-only">Nombre del contacto</label>
+        <input id="name" placeholder="Escribe el nombre del contacto" style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:2px solid #cbd5e1;font-size:18px" />
+        <button class="btn green" type="submit">Guardar contacto</button>
+      </form>
+      <p id="saved" role="status" aria-live="polite" style="color:var(--muted);margin-top:10px"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Guía clara para personas mayores • <a href="#contenido" style="color:var(--blue)">Volver arriba</a></p>
+  </footer>
+
+  <script>
+    // Accesibilidad: tamaño de letra
+    let base=18; const apply=()=>document.body.style.fontSize=base+'px';
+    document.getElementById('bPlus').onclick=()=>{base=Math.min(base+2,28);apply()}
+    document.getElementById('bMinus').onclick=()=>{base=Math.max(base-2,14);apply()}
+
+    // Alto contraste
+    const bContrast=document.getElementById('bContrast');
+    bContrast.onclick=()=>{
+      const on=document.documentElement.getAttribute('data-contrast')==='high';
+      document.documentElement.setAttribute('data-contrast',on? 'normal':'high');
+      bContrast.setAttribute('aria-pressed',String(!on));
+    }
+
+    // Lectura en voz alta
+    document.getElementById('bRead').onclick=()=>{
+      const s=window.getSelection(); if(s && s.toString().trim()){speak(s.toString());return}
+      const sec=document.elementFromPoint(window.innerWidth/2,120)?.closest('section');
+      const t=sec?.querySelector('h2')?.textContent || 'Guía de WhatsApp';
+      speak('Estás en la sección: '+t+'. Desplázate para seguir los pasos.');
+    }
+    function speak(text){ try{window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='es-ES'; window.speechSynthesis.speak(u);}catch(e){alert('Tu navegador no admite lectura en voz alta.')} }
+
+    // Simulador de chat
+    const msgs=document.getElementById('msgs');
+    const txt=document.getElementById('txt');
+    const bSend=document.getElementById('bSend');
+    const bEmoji=document.getElementById('bEmoji');
+    const bAudio=document.getElementById('bAudio');
+    const bAdj=document.getElementById('bAdj');
+
+    function addBubble(text, out=true){
+      const d=document.createElement('div');
+      d.className='bubble '+(out?'out':'in');
+      d.textContent=text; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
+    }
+
+    bSend.onclick=()=>{
+      const v=(txt.value||'').trim(); if(!v){txt.focus(); return}
+      addBubble(v,true); txt.value='';
+      setTimeout(()=>addBubble('✔️ Mensaje recibido',false),600);
+    }
+
+    bEmoji.onclick=()=>{ txt.value += ' 🙂'; txt.focus(); }
+
+    bAudio.onclick=()=>{
+      addBubble('🎤 Nota de voz (simulada)',true);
+      setTimeout(()=>addBubble('👂 Te escucho perfecto',false),900);
+    }
+
+    bAdj.onclick=()=>{
+      addBubble('📎 Foto/Documento adjunto (simulado)',true);
+      setTimeout(()=>addBubble('📥 Archivo recibido',false),800);
+    }
+
+    // Guardar contacto (práctica)
+    const formName=document.getElementById('formName');
+    const saved=document.getElementById('saved');
+    formName.addEventListener('submit',e=>{
+      e.preventDefault(); const name=(document.getElementById('name').value||'').trim();
+      if(!name){ saved.textContent='Escribe un nombre.'; return }
+      document.getElementById('contactName').textContent=name; saved.innerHTML=' Contacto guardado (simulación): <strong>'+name+'</strong>.';
+    });
+  </script>
+  <br>
+  <a href="menu.html" class="boton">Volver al menú</a>
+</body>
+</html>

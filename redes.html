@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redes sociales para adultos mayores — Guía práctica</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#fff;--text:#0f172a;--muted:#475569;--accent:#7c3aed;--ok:#16a34a;--warn:#f59e0b;--danger:#dc2626;--shadow:0 12px 32px rgba(2,6,23,.08);--r:16px}
+    [data-contrast="high"]{--bg:#000;--card:#111;--text:#fff;--muted:#e5e7eb}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6;font-size:18px}
+    header{position:sticky;top:0;background:var(--card);box-shadow:var(--shadow);z-index:30}
+    .wrap{max-width:1100px;margin:auto;padding:18px}
+    .brand{display:flex;gap:14px;align-items:center}
+    h1{font-size:28px;margin:4px 0}
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{border:none;padding:10px 14px;border-radius:999px;background:var(--accent);color:#fff;cursor:pointer;font-size:15px}
+    .btn.alt{background:#334155}
+    .card{background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-top:12px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .step{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:start}
+    .num{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
+    .figure{background:#eef2ff;border:1px dashed #c7d2fe;padding:10px;border-radius:12px;text-align:center}
+    .figure img{max-width:100%;border-radius:10px}
+    .tip{background:#fff7ed;border:1px solid #fde68a;padding:12px;border-radius:12px;color:#92400e}
+    .ok{background:#ecfdf5;border:1px solid #bbf7d0;padding:12px;border-radius:12px;color:#065f46}
+    footer{text-align:center;color:var(--muted);padding:28px 12px}
+    .phone{border-radius:14px;padding:10px;background:#0b1220;color:#e6eefb}
+    .post{background:rgba(255,255,255,.04);padding:10px;border-radius:12px;margin:8px 0}
+    .actions{display:flex;gap:8px;align-items:center}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#f1f5f9;padding:6px 10px;border-radius:999px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+      <div class="brand">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#7c3aed"/><path d="M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div>
+          <h1>Redes sociales: guía para adultos mayores</h1>
+          <div style="color:var(--muted);font-size:14px">Facebook, Instagram, X/Twitter, TikTok — uso seguro y sencillo</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="bLarger">A+ Texto</button>
+        <button class="btn alt" id="bSmaller">A− Texto</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <section class="card" aria-labelledby="intro">
+      <h2 id="intro">¿Por qué usar redes sociales?</h2>
+      <p>Las redes ayudan a <strong>conectarnos con familia y amigos</strong>, compartir fotos y estar informados. También es importante usarlas con cuidado para proteger la privacidad.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Beneficios</h3>
+          <ul>
+            <li>Ver fotos y videos de seres queridos.</li>
+            <li>Mantener contacto con grupos y actividades.</li>
+            <li>Aprender cosas nuevas en videos cortos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Riesgos</h3>
+          <ul>
+            <li>Falsas noticias y estafas.</li>
+            <li>Compartir datos personales sin querer.</li>
+            <li>Comentarios molestos o acosadores.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="principios">
+      <h2 id="principios">Principios básicos</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Configura privacidad</h3>
+          <p>Asegúrate que tus publicaciones sean visibles solo para <strong>amigos</strong> o <strong>contactos</strong>, y revisa quién puede ver tu información.</p>
+        </div>
+        <div class="card">
+          <h3>Pide ayuda</h3>
+          <p>Si no estás seguro de un mensaje, pregunta a un familiar o a alguien de confianza antes de responder o dar dinero.</p>
+        </div>
+        <div class="card">
+          <h3>Piensa antes de publicar</h3>
+          <p>Evita compartir información sensible: números de teléfono, claves, direcciones exactas o datos bancarios.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="facebook">
+      <h2 id="facebook">Facebook — uso básico</h2>
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h4>Crear perfil</h4>
+          <p>Usa tu nombre real, una foto clara y agrega solo la información que quieras compartir.</p>
+        </div>
+      </div>
+      <div class="step" style="margin-top:12px">
+        <div class="num">2</div>
+        <div>
+          <h4>Publicar foto o estado</h4>
+          <p>Toca <em>¿Qué estás pensando?</em>, escribe, agrega foto y selecciona <em>Amigos</em> o <em>Solo yo</em> antes de publicar.</p>
+        </div>
+      </div>
+      <div style="margin-top:12px" class="figure"><img src="img/Capture-decran-2023-11-10-123711.png" alt="Ejemplo publicar en Facebook"/><div style="color:var(--muted);margin-top:8px">Elige la audiencia antes de publicar.</div></div>
+    </section>
+
+    <section class="card" aria-labelledby="instagram">
+      <h2 id="instagram">Instagram — fotos y Reels</h2>
+      <div class="grid">
+        <div>
+          <h4>Publicar foto</h4>
+          <ol>
+            <li>Pulsa + → Foto → elige una imagen.</li>
+            <li>Escribe un texto corto y toca <strong>Compartir</strong>.</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Reels y videos</h4>
+          <p>Videos cortos que la gente disfruta. Si no quieres que todos los vean, pon tu cuenta como <strong>privada</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="x">
+      <h2 id="x">X / Twitter — noticias y opiniones</h2>
+      <p>Es útil para seguir noticias, pero hay mucha opinión. Antes de compartir algo, verifica la fuente.</p>
+      <div class="tip" style="margin-top:8px">Consejo: No compartas enlaces antes de abrirlos y confirmarlos.</div>
+    </section>
+
+    <section class="card" aria-labelledby="tiktok">
+      <h2 id="tiktok">TikTok — videos cortos</h2>
+      <p>Videos muy cortos y fáciles de ver. Puedes seguir cuentas que te gusten y limitar el tiempo de uso.</p>
+      <div class="ok" style="margin-top:8px">Control parental / tiempo: activa límites si necesitas ayuda a no pasar demasiado tiempo.</div>
+    </section>
+
+    <section class="card" aria-labelledby="interaccion">
+      <h2 id="interaccion">Cómo interactuar (comentar, dar like, compartir)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Comentar</h3>
+          <p>Evita discusiones. Si un comentario es ofensivo, usa <strong>reportar</strong> o <strong>bloquear</strong> al usuario.</p>
+        </div>
+        <div class="card">
+          <h3>Compartir</h3>
+          <p>Antes de reenviar noticias, verifica con 2 fuentes confiables.</p>
+        </div>
+        <div class="card">
+          <h3>Bloquear y reportar</h3>
+          <p>Bloquear detiene que una persona vea tu perfil o te contacte. Reportar le indica a la red que el contenido es inapropiado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="privacidad">
+      <h2 id="privacidad">Configuración de privacidad (pasos rápidos)</h2>
+      <ol>
+        <li>Facebook: Ajustes → Privacidad → ¿Quién puede ver tus publicaciones? Selecciona <em>Amigos</em>.</li>
+        <li>Instagram: Perfil → Menú → Configuración → Privacidad → Cuenta privada.</li>
+        <li>TikTok/X: Revisa <em>Privacidad</em> y limita mensajes o comentarios.</li>
+      </ol>
+      <div class="figure" style="margin-top:10px"><img src="img/configuraciión-seguridad-facebook.jpg" alt="Ejemplo configuración privacidad"/><figcaption style="color:var(--muted)">Revisa estas opciones al crear la cuenta.</figcaption></div>
+    </section>
+
+    <section class="card" aria-labelledby="estafas">
+      <h2 id="estafas">Estafas comunes en redes</h2>
+      <ul>
+        <li>Mensajes de desconocidos con enlaces: no abrir.</li>
+        <li>“Gané un premio”: probable estafa.</li>
+        <li>Solicitudes de dinero de una cuenta que dice ser familiar: confirma por otro medio.</li>
+      </ul>
+      <div class="tip">Si una publicación pide transferir dinero o datos, detente y consulta con alguien de confianza.</div>
+    </section>
+
+    <section class="card" aria-labelledby="practicar">
+      <h2 id="practicar">Simulador: crear una publicación</h2>
+      <div class="grid">
+        <div class="card">
+          <label for="postText" class="sr-only">Texto de la publicación</label>
+          <textarea id="postText" placeholder="Escribe aquí tu publicación (ej.: Foto del almuerzo, hola familia!)" style="width:100%;min-height:110px;padding:12px;border-radius:12px;border:2px solid #e6eef8;font-size:16px"></textarea>
+          <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+            <button class="btn" id="publish">Publicar (simulado)</button>
+            <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="audFriends" checked/> Solo amigos</label>
+          </div>
+          <p id="pubOut" style="color:var(--muted);margin-top:10px"></p>
+        </div>
+        <div class="card phone">
+          <h3>Vista previa (teléfono)</h3>
+          <div id="preview" class="post">Aquí verás tu publicación simulada.</div>
+          <div class="actions" style="margin-top:8px">
+            <button class="btn alt" id="like">👍 Me gusta</button>
+            <button class="btn alt" id="comment">💬 Comentar</button>
+            <button class="btn alt" id="share">🔁 Compartir</button>
+          </div>
+          <p id="actionOut" style="color:var(--muted);margin-top:10px"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="tiempouso">
+      <h2 id="tiempouso">Tiempo de uso y bienestar</h2>
+      <p>Fija límites: por ejemplo 30‑45 minutos diarios para evitar fatiga. Usa recordatorios o pide a un familiar que te ayude a configurar límites en el teléfono.</p>
+    </section>
+
+    <section class="card" aria-labelledby="etiqueta">
+      <h2 id="etiqueta">Etiqueta y seguridad emocional</h2>
+      <ul>
+        <li>Respeta opiniones distintas.</li>
+        <li>No alimentes discusiones en comentarios.</li>
+        <li>Si algo te molesta, bloquea y reporta. Tu paz es lo primero.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="video">
+      <h2 id="video">Video guía</h2>
+      <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000">
+        <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0" src="https://youtu.be/wHkj1qLUtfk" title="Cómo usar redes sociales" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="checklist">
+      <h2 id="checklist">Lista rápida antes de publicar</h2>
+      <ol>
+        <li>No comparto datos personales (RUT, dirección, cuentas).</li>
+        <li>Reviso la configuración de privacidad.</li>
+        <li>Pienso si la publicación ayuda o podría herir a alguien.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p style="color:var(--muted)">Guía práctica • Si quieres, la adapto a Facebook o Instagram paso a paso.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Texto grande
+    let base=18; const apply=()=>document.body.style.fontSize=base+'px';
+    document.getElementById('bLarger').onclick=()=>{base=Math.min(base+2,28);apply()}
+    document.getElementById('bSmaller').onclick=()=>{base=Math.max(base-2,14);apply()}
+
+    // Simulador publicar
+    const publish=document.getElementById('publish');
+    const preview=document.getElementById('preview');
+    const postText=document.getElementById('postText');
+    const pubOut=document.getElementById('pubOut');
+    publish.addEventListener('click',()=>{
+      const txt=(postText.value||'').trim(); const onlyFriends=document.getElementById('audFriends').checked;
+      if(!txt){ pubOut.textContent='Escribe algo antes de publicar.'; return }
+      preview.innerHTML=`<strong>${onlyFriends? 'Solo amigos' : 'Público'}</strong><div style="margin-top:8px;padding:8px;border-radius:8px;background:rgba(255,255,255,.04)">${escapeHtml(txt)}</div>`;
+      pubOut.textContent='Publicado (simulado). Recuerda revisar la audiencia antes de publicar en la vida real.';
+    });
+    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+    // Acciones simuladas
+    document.getElementById('like').addEventListener('click',()=>document.getElementById('actionOut').textContent='Has dado Me gusta (simulado)');
+    document.getElementById('comment').addEventListener('click',()=>{ const c=prompt('Escribe un comentario:',''); if(c) document.getElementById('actionOut').textContent='Comentario publicado: '+c; });
+    document.getElementById('share').addEventListener('click',()=>document.getElementById('actionOut').textContent='Compartido (simulado)');
+  </script>
+<a href="menu.html" class="boton"> Volver al menú</a>
+</body>
+</html>
+
+
+
